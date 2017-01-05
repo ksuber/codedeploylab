@@ -6,7 +6,7 @@ files:
     destination: /var/www/html
 
 permissions:
-  - objects: /var/www/html
+  - object: /var/www/html
     pattern: index.html
     owner: apache
     group: apache
@@ -15,9 +15,9 @@ permissions:
       - file
 
 hooks:
-  BeforeInstall
-    -location: scripts/webserver-stop.sh
-    -location: scripts/delete-old-index.sh
+  BeforeInstall:
+    - location: scripts/webserver-stop.sh
+    - location: scripts/delete-old-index.sh
   AfterInstall:
     - location: scripts/sleep.sh
     - location: scripts/webserver-start.sh
